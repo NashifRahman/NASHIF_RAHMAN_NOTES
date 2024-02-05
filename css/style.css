@@ -1,0 +1,116 @@
+@import "reset.css";
+@import "utility.css";
+
+:root{
+    --black-transparant: rgba(0,0,0,0.4);
+    --black-almost: rgba(0,0,0,0.7);
+    --grey-lightest: #d9d9d9;
+}
+
+.logo{
+    font-weight: bold;
+    padding: 41px 25px 0 25px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nota{
+    font-weight: bold;
+    display: flex;
+    gap: 15px;
+    align-items:center;
+    user-select: none;
+}
+
+h1{
+    font-size: 24px;
+}
+
+.nota h2{
+    font-size: 19px;
+}
+
+.fa-note-sticky{
+    font-size: 38px;
+}
+
+.add{
+    margin: 62px 55px 0 25px ;
+    border: 2px solid #727272;
+    border-radius: 10px;
+    padding: 10px;
+    user-select: none;
+}
+
+li{
+    margin: 10px 55px 0 25px ;
+    border: 2px solid #727272;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.garis{
+    margin: 25px auto;
+    border: 1px solid black;
+    max-width: 294px;
+}
+
+.main h2{
+    font-size: 59px;
+    color: var(--black-transparant);
+    font-weight: bold;
+}
+
+.main p{
+    font-size: 38px;
+    color: var(--black-transparant);
+}
+
+@media(max-width: 750px){
+    .container{
+        flex-direction: column;
+    }
+}
+
+@media(max-width:1000px){
+    .main h2{
+        font-size: 47px;
+    }
+
+    .main p{
+        font-size: 30px;
+    }
+}
+
+.title{
+    font-size: 47px;
+    color: var(--black-almost);
+    font-weight: bold;
+}
+
+.sub-title{
+    font-size: 15px;
+    color: var(--black-almost);
+    font-weight: bold;
+}
+
+.title::placeholder, .sub-title::placeholder{
+    color: var(--black-transparant);
+}
+
+textarea{
+    word-wrap: break-word; /* Allow words to break if they exceed the width */
+    overflow-wrap: break-word; /* Additional property for browsers that support it */
+    font-size: 24px;
+    color: var(--black-almost);
+    resize: none;
+}
+
+textarea::placeholder{
+    color: var(--black-transparant);
+}
+
+.btn-2{
+    color: red;
+}
