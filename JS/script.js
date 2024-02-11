@@ -63,6 +63,7 @@ function edit(){
 function resize(){
   const textArea = document.querySelector("textarea");
   textArea.addEventListener("input",e=>{
+    textArea.style.overflow="hiddden";
     textArea.style.height= `auto`;
     let scHeight = e.target.scrollHeight;
     textArea.style.height= `${scHeight}px`;
