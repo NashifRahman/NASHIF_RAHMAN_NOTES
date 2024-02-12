@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 var bodyParser = require('body-parser')
 const {setupDB} = require('../database/db.js')
+const cors = require('cors');
 const port = 3000
 
-const coba = [];
+
 
 async function mainApp(){
     const dbConnection = await setupDB()
@@ -15,9 +16,18 @@ async function mainApp(){
     // parse application/json
     app.use(bodyParser.json())
 
+    //Cors Implementation
+    app.use(cors());
+
     app.get('/', async (req, res) => {
         try {
-        const sql = "SELECT * FROM simpan";
+        let sql = `SELECT * FROM simpan`;
+        const idparam = req.query.id;
+
+        if(idparam){
+            sql += ` WHERE id = ${idparam} `;
+            console.log(req.query.id);
+        }
 
         const [rows] = await dbConnection.query(sql)
 
@@ -27,7 +37,7 @@ async function mainApp(){
            "message" : "pesan telah di dapatkan",
         "data" : rows
         })
-        return
+        return;
     } catch (err) {
         console.log(err);
         res.json({
@@ -36,7 +46,7 @@ async function mainApp(){
             "data" : null
         })
     }
-    
+
     })
 
     app.post('/', async (req, res) => {
@@ -52,7 +62,7 @@ async function mainApp(){
            "message" : "pesan telah di kirim",
             "data" : result
         })
-         return
+         return;
         } catch (err) {
          console.log(err);
          res.json({
@@ -60,7 +70,7 @@ async function mainApp(){
            "message" : "err",
             "data" : null
         })
-        return
+        return;
         }
     
     })
@@ -76,15 +86,15 @@ async function mainApp(){
            "message" : "pesan telah di kirim",
             "data" : result
         })
-        return
+        return;
         } catch (err) {
             console.log(err);
             res.json({
             "status" : false,
             "message" : "err",
-                "data" : null
+            "data" : null
             })
-            return
+            return;
         }
     })
 
